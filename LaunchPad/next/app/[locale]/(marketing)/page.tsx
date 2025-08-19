@@ -1,12 +1,12 @@
 import { Metadata } from 'next';
-import { redirect } from 'next/navigation';
+import { ExpanovaHome } from './expanova/ExpanovaHome';
 
 export const metadata: Metadata = {
   title: 'Expanova - AI Bureaucracy Assistant for Valencia',
   description: 'Navigate Spanish bureaucracy with ease. Get personalized roadmaps, automated document processing, appointment monitoring, and expert AI guidance for expats in Valencia.',
+  keywords: ['spain', 'bureaucracy', 'nie', 'empadronamiento', 'valencia', 'expat', 'ai assistant'],
 };
 
-export default async function HomePage({ params }: { params: { locale: string } }) {
-  // Redirect to Expanova homepage
-  redirect(`/${params.locale}/expanova`);
+export default function HomePage() {
+  return <ExpanovaHome />;
 }

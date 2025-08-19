@@ -51,10 +51,11 @@ export const BuroChat: React.FC<BuroChatProps> = ({ isOpen = false, onToggle }) 
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3001/api/chat/message', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5423'}/api/chat/message`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token') || ''}`,
         },
         body: JSON.stringify({
           message: userMessage.text,
