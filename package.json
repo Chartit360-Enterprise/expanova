@@ -1,0 +1,19 @@
+{
+  "name": "expanova",
+  "version": "1.0.0",
+  "description": "Next.js application for ExpaNova",
+  "type": "module",
+  "scripts": {
+    "dev": "cd next && yarn dev",
+    "build": "cd next && yarn build",
+    "start": "cd next && yarn start",
+    "setup": "cd next && yarn && node --loader ts-node/esm ../scripts/copy-env.mts ./"
+  },
+  "dependencies": {
+    "@types/node": "^22.5.2",
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
+}
