@@ -11,6 +11,11 @@ export async function generateMetadata({
     return {
         title: 'Expanova Group',
         description: 'Expanding what\'s possible through innovation infrastructure.',
+        icons: {
+            icon: '/favicon.ico',
+            shortcut: '/favicon.ico',
+            apple: '/favicon.ico',
+        },
     };
 }
 
