@@ -1,28 +1,16 @@
 {
   "name": "expanova",
   "version": "1.0.0",
-  "description": "AI-powered bureaucracy assistant for Valencia expats",
+  "description": "Expanova - Innovation Infrastructure Platform",
   "type": "module",
   "scripts": {
-    "next": "yarn dev --prefix ./next/",
-    "strapi": "yarn dev --prefix ./strapi/",
-    "backend": "cd backend && npm run dev",
-    "setup:next": "cd next && yarn && node --loader ts-node/esm ../scripts/copy-env.mts ./",
-    "setup:strapi": "cd strapi && yarn && node --loader ts-node/esm ../scripts/copy-env.mts ./",
-    "setup:backend": "cd backend && npm install",
-    "setup": "yarn install && yarn setup:next && yarn setup:strapi && yarn setup:backend",
-    "dev": "yarn concurrently \"cd strapi && yarn develop\" \"npx wait-on http://localhost:1337 && cd next && yarn dev\" \"cd backend && npm run dev\"",
-    "dev:full": "yarn concurrently \"docker-compose up -d\" \"yarn dev\"",
-    "seed": "cd strapi && yarn strapi import -f ./data/export_20250116105447.tar.gz --force",
-    "export": "cd strapi && yarn strapi export --no-encrypt -f ./data/export_20250116105447"
+    "dev": "cd next && yarn dev",
+    "build": "cd next && yarn build",
+    "start": "cd next && yarn start",
+    "setup": "cd next && yarn install"
   },
   "dependencies": {
     "@types/node": "^22.5.2",
-    "concurrently": "^8.2.2",
-    "typescript": "^5.0.0",
-    "wait-on": "^8.0.1"
-  },
-  "devDependencies": {
-    "ts-node": "^10.9.2"
+    "typescript": "^5.0.0"
   }
 }

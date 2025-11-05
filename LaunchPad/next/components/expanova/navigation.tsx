@@ -2,47 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-
-interface NavItem {
-  label: string;
-  href?: string;
-  children?: NavItem[];
-}
-
-const navItems: NavItem[] = [
-  {
-    label: "Angel Investments",
-    children: [
-      { label: "Expanova Capital", href: "/ventures/capital" },
-      { label: "Expanova Foundry", href: "/ventures/foundry" },
-      { label: "Expanova Signal", href: "/ventures/signal" },
-    ],
-  },
-  {
-    label: "Digital Products",
-    children: [
-      { label: "Criterion AI", href: "/products/criterion" },
-      { label: "Chartit360", href: "/portfolio/chartit360" },
-    ],
-  },
-  {
-    label: "Digital Agency",
-    children: [
-      { label: "BlackBox Dev", href: "/agency/blackbox-dev" },
-    ],
-  },
-  { label: "About", href: "/about" },
-];
 
 export const Navigation: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);

@@ -1,132 +1,166 @@
-# 🤖 Expanova for Valencia
+# 🤖 Expanova Group
 
-**Making Spanish bureaucracy bearable, one automated task at a time.**
+**Expanding what's possible.**
 
 ![Expanova](./LaunchPad.jpg)
 
-Expanova is the first AI-powered bureaucratic assistant specifically designed for expats living in Valencia, Spain. Our platform automates the most painful parts of Spanish administration, from NIE applications to empadronamiento, with intelligent document processing, appointment monitoring, and 24/7 AI guidance.
+Expanova is an innovation infrastructure company. We build AI-powered tools for startup evaluation, make strategic investments, and deliver rapid development through our agency wing.
 
 This repository contains:
-- A full-stack AI bureaucracy assistant with Node.js backend
-- A beautiful Next.js frontend built on Strapi LaunchPad design
-- Strapi CMS for content management
-- Complete Docker development environment
+- A beautiful Next.js frontend application
+- Modern React components with TypeScript
+- Tailwind CSS styling with custom design system
+- Allerta Stencil font for impactful titles
 
 ## 🚀 What Expanova Does
 
-### **For Valencia Expats:**
-- **Smart Roadmaps**: Personalized task lists based on your visa type, nationality, and family situation
-- **Document Magic**: Upload docs → AI extracts data → Auto-fills Spanish forms  
-- **Appointment Sniper**: Monitors Policía, DGT, Ayuntamiento, GVA for available citas
-- **AI Chat Assistant**: 24/7 support trained on Spanish bureaucracy procedures
-- **Progress Tracking**: Beautiful dashboard showing completion status and next steps
-
-### **Key Processes Automated:**
-- NIE/TIE application and renewal
-- Empadronamiento (municipal registration)
-- SIP health card registration
-- Bank account opening guidance
-- Driving license exchange
-- Tax declaration preparation
+### **Our Focus:**
+- **Criterion**: AI-powered startup evaluation tool that transforms subjective scoring into reliable binary decisions with 85%+ accuracy
+- **Expanova Capital**: Strategic investments in validated ideas
+- **Expanova Foundry**: Build and scale validated concepts
+- **BlackBox Dev**: Rapid web development agency
+- **Chartit360**: AI-driven financial analytics platform (portfolio company)
 
 ## 🛠️ Quick Start
 
 ### **Prerequisites**
 - Node.js 18+
-- Docker & Docker Compose  
 - Yarn package manager
 
 ### **1. Clone Repository**
 
 ```bash
 git clone <your-expanova-repo>
-cd expanova
+cd expanova/LaunchPad
 ```
 
-## 2. Set up environment variables
+### **2. Install Dependencies**
 
-Before you take off, set up the required environment variables for both Strapi and Next.js.
-
-To create the Strapi .env file, copy the content of the `./strapi/.env.example` file into a new file named `./strapi/.env`, then modify the values to match your setup:
-
-```sh
-cp ./strapi/.env.example ./strapi/.env
+```bash
+yarn setup
 ```
 
-Then do the same for the Next.js .env file, and modify it too:
+### **3. Start Development Server**
 
-```sh
-cp ./next/.env.example ./next/.env
+```bash
+yarn dev
 ```
 
-## 3. Start Strapi
+The application will be available at http://localhost:3000
 
-Take a deep breath. It's time to power up the Strapi engines. Navigate to your ./my-projects/launchpad/strapi folder by running:
+### **4. Build for Production**
 
-Navigate to your `./my-projects/launchpad/strapi` folder by running `cd strapi` from your command line.
-
-- Run the following command in your `./launchpad/strapi` folder:
-
-```
-yarn && yarn seed && yarn develop
+```bash
+yarn build
 ```
 
-This will install dependencies, sprinkle in some data magic, and run the server. (You can run these commands separately, but why not be efficient?)
+Then start the production server:
 
-## 4. Start Next.js
-
-We're almost ready for lift-off! Next.js is your sleek, futuristic interface for getting all that glorious content out into the world. 🚀
-
-Open a new terminal tab or window to leave Strapi running, and navigate to your `./my-projects/launchpad/next` folder by running `cd next`.
-
-- Run the following command in your `./launchpad/next` folder
-
-```
-yarn && yarn build && yarn start
+```bash
+yarn start
 ```
 
-This installs dependencies, builds your project, and starts your server. You’re now a spacefaring content master!
+## 📁 Project Structure
 
-## Features Overview ✨
+```
+LaunchPad/
+├── next/                    # Next.js application
+│   ├── app/                # App router pages
+│   │   ├── [locale]/      # Internationalized routes
+│   │   └── globals.css    # Global styles with custom fonts
+│   ├── components/        # Reusable React components
+│   │   └── expanova/     # Expanova-specific components
+│   ├── lib/              # Utility functions
+│   └── types/            # TypeScript type definitions
+├── package.json          # Root package configuration
+└── README.md            # This file
+```
 
-### User
+## 🎨 Design System
 
-<br />
+### Typography
+- **Titles**: Allerta Stencil (Google Fonts)
+- **Body**: Inter (Google Fonts)
+- **Code**: JetBrains Mono
 
-**An intuitive, minimal editor** The editor allows you to pull in dynamic blocks of content. It’s 100% open-source, and it’s fully extensible.<br />
-**Media Library** Upload images, video or any files and crop and optimize their sizes, without quality loss.<br />
-**Flexible content management** Build any type of category, section, format or flow to adapt to your needs. <br />
-**Sort and Filter** Built-in sorting and filtering: you can manage thousands of entries without effort.<br />
-**User-friendly interface** The most user-friendly open-source interface on the market.<br />
-**SEO optimized** Easily manage your SEO metadata with a repeatable field and use our Media Library to add captions, notes, and custom filenames to optimize the SEO of media assets.<br /><br />
+### Styling
+- Tailwind CSS for utility-first styling
+- Custom glass morphism effects
+- Gradient text effects
+- Responsive design with mobile-first approach
 
-### Global
+## 🌐 Features
 
-<br />
+- **Modern Stack**: Next.js 14+ with App Router
+- **Type Safety**: Full TypeScript coverage
+- **Internationalization**: Multi-locale support
+- **Performance**: Optimized for Core Web Vitals
+- **Responsive**: Mobile, tablet, and desktop layouts
+- **Custom Fonts**: Allerta Stencil for distinctive branding
 
-[Customizable API](https://strapi.io/features/customizable-api): Automatically build out the schema, models, controllers for your API from the editor. Get REST or GraphQL API out of the box without writing a single line of code.<br />
-[Media Library](https://strapi.io/features/media-library): The media library allows you to store your images, videos and files in your Strapi admin panel with many ways to visualize and manage them.<br />
-[Role-Based Access Control (RBAC)](https://strapi.io/features/custom-roles-and-permissions): Role-Based Access Control is a feature available in the Administration Panel settings that let your team members have access rights only to the information they need.<br />
-[Internationalization (i18n)](https://strapi.io/features/internationalization): Internationalization (i18n) lets you create many content versions, also called locales, in different languages and for different countries.<br />
-[Audit Logs](https://strapi.io/blog/reasons-and-best-practices-for-using-audit-logs-in-your-application)The Audit Logs section provides a searchable and filterable display of all activities performed by users of the Strapi application<br />
-[Data transfer](https://strapi.io/blog/importing-exporting-and-transferring-data-with-the-strapi-cli) Streams your data from one Strapi instance to another Strapi instance.<br />
-[Review Worfklows](https://docs.strapi.io/user-docs/settings/review-workflows) Create and manage any desired review stages for your content, enabling your team to collaborate in the content creation flow from draft to publication. <br />
+## 📝 Development
 
-## Resources
+### Adding New Pages
 
-[Docs](https://docs.strapi.io) • [Demo](https://strapi.io/demo) • [Forum](https://forum.strapi.io/) • [Discord](https://discord.strapi.io) • [Youtube](https://www.youtube.com/c/Strapi/featured) • [Strapi Design System](https://design-system.strapi.io/) • [Marketplace](https://market.strapi.io/) • [Cloud Free Trial](https://cloud.strapi.io)
+Create new pages in `next/app/[locale]/` directory:
 
-## Todo
+```tsx
+// next/app/[locale]/new-page/page.tsx
+export default function NewPage() {
+  return <div>New Page Content</div>
+}
+```
 
-- [ ] Implement the official Strapi SEO plugin
-- [ ] Implement the community Strapi preview plugin
-- [ ] Create localized content for the pricing plans and products
-- [ ] Populate creator fields when it'll work on Strapi 5 (article authors information are missing)
+### Using Custom Fonts
 
-## Customization
+The Allerta Stencil font is automatically applied to all heading elements (h1-h6). To use it on other elements:
 
-- The Strapi application contains a custom population middleware in order to populate more data than what it is set by default. You can find it in the `./strapi/src/middlewares/deepPopulate.ts` file.
+```tsx
+<div className="title-font">This uses Allerta Stencil</div>
+```
 
-- The Strapi application contains a postinstall script that will regenerate an uuid for the project in order to get some anonymous usage information concerning this demo. You can disable it by removing the uuid inside the `./strapi/packages.json` file.
+### Styling Components
 
-- The Strapi application contains a patch for the @strapi/admin package. It is only necessary for the hosted demos since we automatically create the Super Admin users for them when they request this demo on our website.
+Use Tailwind CSS classes:
+
+```tsx
+<div className="glass p-6 rounded-lg">
+  <h2 className="text-4xl gradient-text">Title</h2>
+</div>
+```
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Import the project in Vercel
+3. Set the root directory to `LaunchPad/next`
+4. Deploy!
+
+### Other Platforms
+
+Build the application:
+
+```bash
+cd next
+yarn build
+```
+
+Then deploy the `.next` folder to your hosting provider.
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🙏 Acknowledgments
+
+- Next.js team for the amazing framework
+- Google Fonts for Allerta Stencil and Inter
+- Tailwind CSS for the utility-first CSS framework
+
+---
+
+**Built with ❤️ by the Expanova team**
+
+*Expanding what's possible through innovation infrastructure.*
