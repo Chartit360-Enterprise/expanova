@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "buildCommand": "cd next && yarn install && yarn build",
+  "outputDirectory": "next/.next",
+  "installCommand": "cd next && yarn install"
+}
