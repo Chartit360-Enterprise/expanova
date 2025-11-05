@@ -16,6 +16,41 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Smooth scroll with duration */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+}
+
+/* Custom scrollbar styling for scroll container */
+.snap-y::-webkit-scrollbar {
+  width: 8px;
+}
+
+.snap-y::-webkit-scrollbar-track {
+  background: rgba(15, 20, 16, 0.5);
+}
+
+.snap-y::-webkit-scrollbar-thumb {
+  background: rgba(122, 157, 138, 0.3);
+  border-radius: 4px;
+}
+
+.snap-y::-webkit-scrollbar-thumb:hover {
+  background: rgba(122, 157, 138, 0.5);
+}
+
+.snap-y {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background-color: #0D0D0F;

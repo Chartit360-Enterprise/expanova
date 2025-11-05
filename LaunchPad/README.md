@@ -1,4 +1,4 @@
-# 🤖 Expanova - AI Bureaucracy Assistant for Valencia
+# 🤖 Expanova for Valencia
 
 **Making Spanish bureaucracy bearable, one automated task at a time.**
 

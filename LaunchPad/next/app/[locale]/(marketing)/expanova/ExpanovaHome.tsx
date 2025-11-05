@@ -5,24 +5,20 @@ import { Navigation } from "../../../../components/expanova/navigation";
 
 export const ExpanovaHome: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#0f1410] relative overflow-hidden">
-      {/* Beautiful muted green/red gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2d4a3e]/30 via-[#1a2520]/50 to-[#3a2828]/40" />
-
-      {/* Radial gradient accents */}
-      <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-[#4a6b57]/10 to-transparent blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-radial from-[#6b4a4a]/10 to-transparent blur-3xl" />
-
-      {/* Subtle grid pattern */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.15) 1px, transparent 0)',
-        backgroundSize: '40px 40px'
-      }} />
-
+    <div className="bg-[#0f1410] relative snap-y snap-mandatory h-screen overflow-y-scroll">
       <Navigation />
 
-      <main className="relative pt-48 px-8">
-        <div className="max-w-5xl mx-[100px]">
+      {/* Hero Section */}
+      <section id="home" className="h-screen snap-start flex items-center px-8 pt-20 relative">
+        {/* Hero Background - Muted Green/Red */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#2d4a3e]/30 via-[#1a2520]/50 to-[#3a2828]/40" />
+        <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-[#4a6b57]/10 to-transparent blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-radial from-[#6b4a4a]/10 to-transparent blur-3xl" />
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.15) 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }} />
+        <div className="max-w-5xl mx-[100px] w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -37,7 +33,178 @@ export const ExpanovaHome: React.FC = () => {
             </p>
           </motion.div>
         </div>
-      </main>
+      </section>
+
+      {/* Angel Investments Section */}
+      <section id="ventures" className="h-screen snap-start flex items-center px-8 relative">
+        {/* Ventures Background - Darker with Blue Tint */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1a2530]/40 via-[#0f1410]/60 to-[#2a1a2a]/40" />
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-radial from-[#3a5a6a]/10 to-transparent blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-[#4a3a5a]/10 to-transparent blur-3xl" />
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.15) 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }} />
+        <div className="max-w-5xl mx-[100px] w-full py-32 relative z-10">
+          <div className="mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold tracking-wide text-white mb-6" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+              Angel Investments
+            </h2>
+            <div className="h-px w-24 bg-gradient-to-r from-[#7a9d8a]/60 to-transparent mb-6" />
+            <p className="text-xl text-white/60 leading-relaxed max-w-2xl" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+              We fund and sponsor promising ventures that align with our vision for innovation.
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            <div className="bg-white/3 border border-white/10 p-12 hover:bg-white/5 transition-all">
+              <div className="flex items-start justify-between mb-6">
+                <div>
+                  <h3 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+                    Chartit360
+                  </h3>
+                  <span className="inline-block px-3 py-1 bg-[#ff6b6b]/15 text-[#ff8888] text-xs font-medium tracking-wide border border-[#ff6b6b]/20">
+                    PORTFOLIO COMPANY
+                  </span>
+                </div>
+              </div>
+              <p className="text-lg text-white/60 mb-8 leading-relaxed" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+                Enterprise-grade data analytics platform. Advanced AI-driven financial insights, forecasts, and real-time dashboards.
+              </p>
+              <a
+                href="https://marketing.chartit360.com/en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium tracking-wide transition-colors group"
+                style={{ fontFamily: "'Spline Sans', sans-serif" }}
+              >
+                Visit Website
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover:translate-x-1 transition-transform">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Digital Products Section */}
+      <section id="products" className="h-screen snap-start flex items-center px-8 relative">
+        {/* Products Background - Warmer with Purple/Amber Tint */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#3a2a1a]/40 via-[#1a1520]/60 to-[#2a2535]/40" />
+        <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-[#6a4a3a]/10 to-transparent blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-radial from-[#5a3a6a]/10 to-transparent blur-3xl" />
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.15) 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }} />
+        <div className="max-w-5xl mx-[100px] w-full py-32 relative z-10">
+          <div className="mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold tracking-wide text-white mb-6" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+              Digital Products
+            </h2>
+            <div className="h-px w-24 bg-gradient-to-r from-[#7a9d8a]/60 to-transparent mb-6" />
+          </div>
+
+          <div className="space-y-8">
+            <div className="bg-white/3 border border-white/10 p-12 hover:bg-white/5 transition-all">
+              <div className="mb-6">
+                <h3 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+                  Criterion
+                </h3>
+              </div>
+              <p className="text-lg text-white/60 mb-8 leading-relaxed" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+                Startup idea evaluator with 85%+ prediction accuracy. Get evaluations in 5-10 minutes with complete audit trail transparency.
+              </p>
+              <a
+                href="https://criterion.expanova.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium tracking-wide transition-colors group"
+                style={{ fontFamily: "'Spline Sans', sans-serif" }}
+              >
+                Try Criterion
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover:translate-x-1 transition-transform">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+
+            <div className="bg-white/3 border border-white/10 p-12 hover:bg-white/5 transition-all">
+              <div className="flex items-start justify-between mb-6">
+                <div>
+                  <h3 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+                    Chartit360
+                  </h3>
+                  <span className="inline-block px-3 py-1 bg-[#7a9d8a]/15 text-[#7a9d8a] text-xs font-medium tracking-wide border border-[#7a9d8a]/20">
+                    BUILT & SPONSORED
+                  </span>
+                </div>
+              </div>
+              <p className="text-lg text-white/60 mb-8 leading-relaxed" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+                Enterprise-grade data analytics platform. Advanced AI-driven financial insights, forecasts, and real-time dashboards.
+              </p>
+              <a
+                href="https://marketing.chartit360.com/en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium tracking-wide transition-colors group"
+                style={{ fontFamily: "'Spline Sans', sans-serif" }}
+              >
+                Visit Website
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover:translate-x-1 transition-transform">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Digital Agency Section */}
+      <section id="agency" className="h-screen snap-start flex items-center px-8 relative">
+        {/* Agency Background - Deep Red/Burgundy Tint */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#2a1a1a]/50 via-[#1a1015]/60 to-[#3a2020]/40" />
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-radial from-[#5a3a3a]/10 to-transparent blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-[#6a2a2a]/10 to-transparent blur-3xl" />
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.15) 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }} />
+        <div className="max-w-5xl mx-[100px] w-full py-32 relative z-10">
+          <div className="mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold tracking-wide text-white mb-6" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+              Digital Agency
+            </h2>
+            <div className="h-px w-24 bg-gradient-to-r from-[#7a9d8a]/60 to-transparent mb-6" />
+          </div>
+
+          <div className="space-y-8">
+            <div className="bg-white/3 border border-white/10 p-12 hover:bg-white/5 transition-all">
+              <div className="mb-6">
+                <h3 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+                  BlackBox Dev
+                </h3>
+              </div>
+              <p className="text-lg text-white/60 mb-8 leading-relaxed" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+                Fast, reliable websites, SaaS platforms, and AI tools for startups, creators, and small businesses. Delivered in days, not weeks.
+              </p>
+              <a
+                href="https://www.blackbox-dev.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium tracking-wide transition-colors group"
+                style={{ fontFamily: "'Spline Sans', sans-serif" }}
+              >
+                Visit Website
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover:translate-x-1 transition-transform">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Starfield - Bottom Right */}
       <div className="fixed bottom-0 right-0 w-[1200px] h-[1200px] pointer-events-none overflow-visible">

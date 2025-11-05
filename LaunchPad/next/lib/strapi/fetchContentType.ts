@@ -74,12 +74,12 @@ export default async function fetchContentType(
     },
     pages: {
       id: 1,
-      title: 'Expanova - AI Bureaucracy Assistant',
+      title: 'Expanova',
       description: 'Navigate Spanish bureaucracy with AI-powered automation',
       slug: params?.filters?.slug || 'homepage',
       locale: params?.filters?.locale || 'en',
       seo: {
-        metaTitle: 'Expanova - AI Bureaucracy Assistant for Valencia',
+        metaTitle: 'Expanova for Valencia',
         metaDescription: 'Navigate Spanish bureaucracy with ease using AI-powered automation',
         metaImage: {
           url: '/next.svg'
@@ -89,12 +89,12 @@ export default async function fetchContentType(
     },
     page: {
       id: 1,
-      title: 'Expanova - AI Bureaucracy Assistant',
+      title: 'Expanova',
       description: 'Navigate Spanish bureaucracy with AI-powered automation',
       slug: params?.filters?.slug || 'homepage',
       locale: params?.filters?.locale || 'en',
       seo: {
-        metaTitle: 'Expanova - AI Bureaucracy Assistant for Valencia',
+        metaTitle: 'Expanova for Valencia',
         metaDescription: 'Navigate Spanish bureaucracy with ease using AI-powered automation',
         metaImage: {
           url: '/next.svg'

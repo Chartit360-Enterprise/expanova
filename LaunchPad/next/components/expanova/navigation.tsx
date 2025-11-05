@@ -67,27 +67,27 @@ export const Navigation: React.FC = () => {
 
           {/* Desktop Navigation - 3 Rectangle Tabs */}
           <div className="hidden md:flex items-center gap-0 ml-auto" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
-            <Link
-              href="/ventures"
+            <a
+              href="#ventures"
               className="relative px-12 py-6 flex items-center text-lg font-semibold tracking-wider text-white/70 hover:text-white transition-all group bg-white/5 border-r border-white/15"
             >
               <span className="relative z-10">Angel Investments</span>
               <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </Link>
-            <Link
-              href="/products"
+            </a>
+            <a
+              href="#products"
               className="relative px-12 py-6 flex items-center text-lg font-semibold tracking-wider text-white/70 hover:text-white transition-all group bg-white/5 border-r border-white/15"
             >
               <span className="relative z-10">Digital Products</span>
               <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </Link>
-            <Link
-              href="/agency"
+            </a>
+            <a
+              href="#agency"
               className="relative px-12 py-6 flex items-center text-lg font-semibold tracking-wider text-white/70 hover:text-white transition-all group bg-white/5"
             >
               <span className="relative z-10">Digital Agency</span>
               <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -120,27 +120,27 @@ export const Navigation: React.FC = () => {
             className="fixed top-20 left-0 right-0 bg-[#2a1a1a]/95 border-b border-[#4a2828]/50 md:hidden z-40 backdrop-blur-xl"
           >
             <div className="px-8 py-6 space-y-3">
-              <Link
-                href="/ventures"
+              <a
+                href="#ventures"
                 className="block py-3 text-sm font-medium tracking-wide text-white/70 hover:text-white transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Angel Investments
-              </Link>
-              <Link
-                href="/products"
+              </a>
+              <a
+                href="#products"
                 className="block py-3 text-sm font-medium tracking-wide text-white/70 hover:text-white transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Digital Products
-              </Link>
-              <Link
-                href="/agency"
+              </a>
+              <a
+                href="#agency"
                 className="block py-3 text-sm font-medium tracking-wide text-white/70 hover:text-white transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Digital Agency
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}
