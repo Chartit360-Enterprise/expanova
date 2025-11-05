@@ -51,8 +51,9 @@ const config: Config = {
         'cursor-selection': 'rgba(255, 255, 255, 0.08)',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Inter', 'system-ui', 'sans-serif'], // Can be upgraded to SF Pro Display or similar premium font
+        sans: ['var(--font-oswald)', 'Oswald', 'system-ui', 'sans-serif'],
+        display: ['var(--font-oswald)', 'Oswald', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-allerta-stencil)', 'Allerta Stencil', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       fontSize: {

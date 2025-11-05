@@ -1,20 +1,21 @@
 import React from 'react'
 
 import { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { generateMetadataObject } from '@/lib/shared/metadata';
-
-import { Footer } from '@/components/footer';
-import { Navbar } from '@/components/navbar';
-import { CartProvider } from '@/context/cart-context';
+import { Oswald, Allerta_Stencil } from 'next/font/google';
 import { cn } from '@/lib/utils';
-import { ViewTransitions } from 'next-view-transitions';
-import fetchContentType from '@/lib/strapi/fetchContentType';
 
-const inter = Inter({
+const oswald = Oswald({
     subsets: ["latin"],
     display: "swap",
-    weight: ["400", "500", "600", "700", "800", "900"],
+    weight: ["200", "300", "400", "500", "600", "700"],
+    variable: "--font-oswald",
+});
+
+const allertaStencil = Allerta_Stencil({
+    subsets: ["latin"],
+    display: "swap",
+    weight: "400",
+    variable: "--font-allerta-stencil",
 });
 
 // Default Global SEO for pages without them
@@ -23,18 +24,10 @@ export async function generateMetadata({
 }: {
     params: { locale: string; slug: string };
 }): Promise<Metadata> {
-    const pageData = await fetchContentType(
-        'global',
-        {
-            filters: { locale: params.locale },
-            populate: "seo.metaImage",
-        },
-        true
-    );
-
-    const seo = pageData?.seo;
-    const metadata = generateMetadataObject(seo);
-    return metadata;
+    return {
+        title: 'Expanova Group',
+        description: 'Expanding what\'s possible through innovation infrastructure.',
+    };
 }
 
 export default async function LocaleLayout({
@@ -44,24 +37,18 @@ export default async function LocaleLayout({
     children: React.ReactNode;
     params: { locale: string };
 }) {
-
-    const pageData = await fetchContentType('global', { filters: { locale } }, true);
     return (
         <html lang={locale}>
-            <ViewTransitions>
-                <CartProvider>
-                    <body
-                        className={cn(
-                            inter.className,
-                            "bg-charcoal antialiased h-full w-full"
-                        )}
-                    >
-                        <Navbar data={pageData.navbar} locale={locale} />
-                        {children}
-                        <Footer data={pageData.footer} locale={locale} />
-                    </body>
-                </CartProvider>
-            </ViewTransitions>
+            <body
+                className={cn(
+                    oswald.variable,
+                    oswald.className,
+                    allertaStencil.variable,
+                    "bg-charcoal antialiased h-full w-full"
+                )}
+            >
+                {children}
+            </body>
         </html>
     );
 }
