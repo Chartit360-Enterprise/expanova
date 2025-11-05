@@ -54,17 +54,23 @@ html {
 body {
   color: rgb(var(--foreground-rgb));
   background-color: #0D0D0F;
-  font-family: 'Oswald', system-ui, sans-serif;
+  font-family: var(--font-oswald), 'Oswald', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Allerta Stencil for titles */
+/* Allerta Stencil for titles - Strong specificity to override inline styles */
 h1, h2, h3, h4, h5, h6,
 .title-font {
-  font-family: var(--font-allerta-stencil), "Allerta Stencil", sans-serif;
+  font-family: var(--font-allerta-stencil), "Allerta Stencil", sans-serif !important;
   font-weight: 400;
   font-style: normal;
+}
+
+/* Apply Oswald to all text elements */
+p, span, div:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6), 
+a, li, td, th, label, input, textarea, select, button {
+  font-family: var(--font-oswald), 'Oswald', system-ui, sans-serif !important;
 }
 
 @layer utilities {

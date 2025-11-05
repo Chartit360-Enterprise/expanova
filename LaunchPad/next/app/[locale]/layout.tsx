@@ -1,22 +1,6 @@
 import React from 'react'
 
 import { Metadata } from 'next';
-import { Oswald, Allerta_Stencil } from 'next/font/google';
-import { cn } from '@/lib/utils';
-
-const oswald = Oswald({
-    subsets: ["latin"],
-    display: "swap",
-    weight: ["200", "300", "400", "500", "600", "700"],
-    variable: "--font-oswald",
-});
-
-const allertaStencil = Allerta_Stencil({
-    subsets: ["latin"],
-    display: "swap",
-    weight: "400",
-    variable: "--font-allerta-stencil",
-});
 
 // Default Global SEO for pages without them
 export async function generateMetadata({
@@ -38,17 +22,8 @@ export default async function LocaleLayout({
     params: { locale: string };
 }) {
     return (
-        <html lang={locale}>
-            <body
-                className={cn(
-                    oswald.variable,
-                    oswald.className,
-                    allertaStencil.variable,
-                    "bg-charcoal antialiased h-full w-full"
-                )}
-            >
-                {children}
-            </body>
-        </html>
+        <>
+            {children}
+        </>
     );
 }
