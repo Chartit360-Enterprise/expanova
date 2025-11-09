@@ -41,6 +41,13 @@ export const Navigation: React.FC = () => {
               <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
             <a
+              href="#contact"
+              className="relative px-4 sm:px-6 md:px-8 lg:px-12 py-6 flex items-center text-sm sm:text-base md:text-lg font-semibold tracking-wider text-white/70 hover:text-white transition-all group bg-white/5 border-r border-white/15"
+            >
+              <span className="relative z-10">Contact</span>
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </a>
+            <a
               href="#agency"
               className="relative px-4 sm:px-6 md:px-8 lg:px-12 py-6 flex items-center text-sm sm:text-base md:text-lg font-semibold tracking-wider text-white/70 hover:text-white transition-all group bg-white/5"
             >
@@ -92,6 +99,13 @@ export const Navigation: React.FC = () => {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Digital Products
+              </a>
+              <a
+                href="#contact"
+                className="block py-2 sm:py-3 text-sm font-medium tracking-wide text-white/70 hover:text-white transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact
               </a>
               <a
                 href="#agency"

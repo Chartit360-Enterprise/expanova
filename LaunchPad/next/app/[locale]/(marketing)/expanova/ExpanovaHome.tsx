@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Navigation } from "../../../../components/expanova/navigation";
+import { ContactForm } from "@/components/contact-form";
 
 export const ExpanovaHome: React.FC = () => {
   return (
@@ -157,6 +158,33 @@ export const ExpanovaHome: React.FC = () => {
                 </svg>
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Us Section */}
+      <section id="contact" className="h-screen snap-start flex items-center px-4 sm:px-6 md:px-8 relative">
+        {/* Contact Background - Teal/Green Tint */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1a2a25]/40 via-[#0f1410]/60 to-[#1a2a2a]/40" />
+        <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-[#2a5a4a]/10 to-transparent blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-radial from-[#3a4a5a]/10 to-transparent blur-3xl" />
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.15) 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }} />
+        <div className="max-w-5xl mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-12 py-16 sm:py-24 md:py-32 relative z-10">
+          <div className="mb-12 sm:mb-16 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-white mb-4 sm:mb-6" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+              Contact Us
+            </h2>
+            <div className="h-px w-20 sm:w-24 bg-gradient-to-r from-[#7a9d8a]/60 to-transparent mb-4 sm:mb-6" />
+            <p className="text-base sm:text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+              Have a question or want to get in touch? Fill out the form below and we'll get back to you as soon as possible.
+            </p>
+          </div>
+
+          <div className="bg-white/3 border border-white/10 p-6 sm:p-8 md:p-12">
+            <ContactForm />
           </div>
         </div>
       </section>
