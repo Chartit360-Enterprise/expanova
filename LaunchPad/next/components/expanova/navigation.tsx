@@ -18,7 +18,7 @@ export const Navigation: React.FC = () => {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#2a1a1a]/90 border-b border-[#4a2828]/50 backdrop-blur-xl">
-        <div className="w-full mx-auto px-0 h-20 flex items-center justify-between">
+        <div className="w-full mx-auto px-4 sm:px-6 md:px-8 h-20 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold tracking-[0.2em] text-white hover:text-white/80 transition-colors" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
             
@@ -28,21 +28,21 @@ export const Navigation: React.FC = () => {
           <div className="hidden md:flex items-center gap-0 ml-auto" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
             <a
               href="#ventures"
-              className="relative px-12 py-6 flex items-center text-lg font-semibold tracking-wider text-white/70 hover:text-white transition-all group bg-white/5 border-r border-white/15"
+              className="relative px-4 sm:px-6 md:px-8 lg:px-12 py-6 flex items-center text-sm sm:text-base md:text-lg font-semibold tracking-wider text-white/70 hover:text-white transition-all group bg-white/5 border-r border-white/15"
             >
               <span className="relative z-10">Angel Investments</span>
               <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
             <a
               href="#products"
-              className="relative px-12 py-6 flex items-center text-lg font-semibold tracking-wider text-white/70 hover:text-white transition-all group bg-white/5 border-r border-white/15"
+              className="relative px-4 sm:px-6 md:px-8 lg:px-12 py-6 flex items-center text-sm sm:text-base md:text-lg font-semibold tracking-wider text-white/70 hover:text-white transition-all group bg-white/5 border-r border-white/15"
             >
               <span className="relative z-10">Digital Products</span>
               <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
             <a
               href="#agency"
-              className="relative px-12 py-6 flex items-center text-lg font-semibold tracking-wider text-white/70 hover:text-white transition-all group bg-white/5"
+              className="relative px-4 sm:px-6 md:px-8 lg:px-12 py-6 flex items-center text-sm sm:text-base md:text-lg font-semibold tracking-wider text-white/70 hover:text-white transition-all group bg-white/5"
             >
               <span className="relative z-10">Digital Agency</span>
               <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -78,24 +78,24 @@ export const Navigation: React.FC = () => {
             exit={{ opacity: 0, y: -10 }}
             className="fixed top-20 left-0 right-0 bg-[#2a1a1a]/95 border-b border-[#4a2828]/50 md:hidden z-40 backdrop-blur-xl"
           >
-            <div className="px-8 py-6 space-y-3">
+            <div className="px-4 sm:px-6 md:px-8 py-4 sm:py-6 space-y-2 sm:space-y-3">
               <a
                 href="#ventures"
-                className="block py-3 text-sm font-medium tracking-wide text-white/70 hover:text-white transition-colors"
+                className="block py-2 sm:py-3 text-sm font-medium tracking-wide text-white/70 hover:text-white transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Angel Investments
               </a>
               <a
                 href="#products"
-                className="block py-3 text-sm font-medium tracking-wide text-white/70 hover:text-white transition-colors"
+                className="block py-2 sm:py-3 text-sm font-medium tracking-wide text-white/70 hover:text-white transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Digital Products
               </a>
               <a
                 href="#agency"
-                className="block py-3 text-sm font-medium tracking-wide text-white/70 hover:text-white transition-colors"
+                className="block py-2 sm:py-3 text-sm font-medium tracking-wide text-white/70 hover:text-white transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Digital Agency
