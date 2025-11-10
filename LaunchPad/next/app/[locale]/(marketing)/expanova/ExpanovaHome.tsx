@@ -179,7 +179,7 @@ export const ExpanovaHome: React.FC = () => {
             </h2>
             <div className="h-px w-20 sm:w-24 bg-gradient-to-r from-[#7a9d8a]/60 to-transparent mb-4 sm:mb-6" />
             <p className="text-base sm:text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
-              Have a question or want to get in touch? Fill out the form below and we'll get back to you as soon as possible.
+              Have a question or want to get in touch? Fill out the form below and we&apos;ll get back to you as soon as possible.
             </p>
           </div>
 
