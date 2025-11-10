@@ -5,25 +5,25 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-expanova-primary focus-visible:ring-offset-2 focus-visible:ring-offset-expanova-bg disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6a2a2a] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-gradient-button text-white shadow-expanova-glow hover:shadow-expanova-glow-hover hover:scale-[1.02] hover:-translate-y-0.5 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700",
+        default: "bg-[#6a2a2a] text-white hover:bg-[#4a1a1a] shadow-sm hover:shadow-md",
         destructive:
-          "bg-expanova-error text-white hover:bg-expanova-error/90 shadow-lg",
+          "bg-expanova-error text-white hover:bg-expanova-error/90 shadow-sm",
         outline:
-          "border border-expanova-primary/40 bg-transparent text-expanova-primary hover:bg-expanova-primary/5 hover:border-expanova-primary/60 hover:shadow-expanova-glow",
+          "border border-expanova-border bg-transparent text-white hover:bg-expanova-surface hover:border-expanova-primary",
         secondary:
-          "border border-expanova-accent/40 bg-transparent text-expanova-accent hover:bg-expanova-accent/5 hover:border-expanova-accent/60 hover:shadow-expanova-glow-purple",
-        ghost: "hover:bg-white/5 hover:text-white text-white/70",
+          "border border-expanova-accent/40 bg-transparent text-expanova-accent hover:bg-expanova-accent/10 hover:border-expanova-accent/60",
+        ghost: "hover:bg-expanova-surface text-white/70",
         link: "text-expanova-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-12 px-8",
-        sm: "h-10 px-6 text-sm",
-        lg: "h-14 px-10 text-base",
-        icon: "h-12 w-12",
+        default: "h-11 px-6",
+        sm: "h-9 px-4 text-sm",
+        lg: "h-12 px-8 text-base",
+        icon: "h-11 w-11",
       },
     },
     defaultVariants: {

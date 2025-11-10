@@ -25,9 +25,9 @@ const config: Config = {
         'expanova-border': '#2A2A30',
         'expanova-border-focus': '#3A3A45',
         // Accent Colors - Unique, Premium
-        'expanova-primary': '#14B8A6', // Sophisticated teal/emerald
-        'expanova-primary-light': '#2DD4BF',
-        'expanova-primary-dark': '#0D9488',
+        'expanova-primary': '#6a2a2a', // Bordeaux from header
+        'expanova-primary-light': '#8a3a3a',
+        'expanova-primary-dark': '#4a1a1a',
         'expanova-secondary': '#F59E0B', // Rich amber/gold
         'expanova-secondary-light': '#FBBF24',
         'expanova-secondary-dark': '#D97706',
