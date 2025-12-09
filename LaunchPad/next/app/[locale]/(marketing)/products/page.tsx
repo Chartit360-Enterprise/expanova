@@ -72,6 +72,30 @@ export default function ProductsPage() {
                 </svg>
               </a>
             </div>
+
+            {/* China GDP AI */}
+            <div className="bg-white/3 border border-white/10 p-6 sm:p-8 md:p-12 hover:bg-white/5 transition-all">
+              <div className="mb-4 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+                  China GDP AI
+                </h2>
+              </div>
+              <p className="text-base sm:text-lg text-white/60 mb-6 sm:mb-8 leading-relaxed" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
+                AI-powered economic forecasting tool. Predicts China's quarterly GDP growth by analyzing real-time news and economic data through multi-model AI in under 2 minutes.
+              </p>
+              <a
+                href="https://china.ml.expanova.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium tracking-wide transition-colors group"
+                style={{ fontFamily: "'Spline Sans', sans-serif" }}
+              >
+                Try China GDP AI
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover:translate-x-1 transition-transform">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </main>
