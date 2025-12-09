@@ -14,65 +14,70 @@ export const ExpanovaHome: React.FC = () => {
     const container = containerRef.current;
     if (!container) return;
 
+    let rafId: number | null = null;
+    let ticking = false;
+
     const handleScroll = () => {
-      if (isScrollingRef.current) return;
+      if (isScrollingRef.current || ticking) return;
+      
+      ticking = true;
+      
+      rafId = requestAnimationFrame(() => {
+        // Clear any existing timeout
+        if (scrollTimeoutRef.current) {
+          clearTimeout(scrollTimeoutRef.current);
+        }
 
-      // Clear any existing timeout
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
+        // Set a timeout to check scroll position after scrolling stops
+        scrollTimeoutRef.current = setTimeout(() => {
+          const sections = container.querySelectorAll('section');
+          const scrollTop = container.scrollTop;
+          const viewportHeight = container.clientHeight;
+          const scrollPosition = scrollTop + viewportHeight / 2;
 
-      // Set a timeout to check scroll position after scrolling stops
-      scrollTimeoutRef.current = setTimeout(() => {
-        const sections = container.querySelectorAll('section');
-        const scrollTop = container.scrollTop;
-        const viewportHeight = container.clientHeight;
-        const scrollPosition = scrollTop + viewportHeight / 2;
+          let closestSection: Element | null = null;
+          let closestDistance = Infinity;
 
-        let closestSection: Element | null = null;
-        let closestDistance = Infinity;
+          sections.forEach((section) => {
+            const sectionElement = section as HTMLElement;
+            const sectionTop = sectionElement.offsetTop;
+            const sectionCenter = sectionTop + sectionElement.offsetHeight / 2;
+            const distance = Math.abs(scrollPosition - sectionCenter);
 
-        sections.forEach((section) => {
-          const sectionElement = section as HTMLElement;
-          const sectionTop = sectionElement.offsetTop;
-          const sectionBottom = sectionTop + sectionElement.offsetHeight;
-          const sectionCenter = sectionTop + sectionElement.offsetHeight / 2;
-          
-          // Check if we're within this section's bounds
-          const isWithinBounds = scrollPosition >= sectionTop && scrollPosition <= sectionBottom;
-          
-          // Calculate distance to section center
-          const distance = Math.abs(scrollPosition - sectionCenter);
-
-          // If we're not perfectly aligned with a section, snap to the closest one
-          if (distance < closestDistance) {
-            closestDistance = distance;
-            closestSection = sectionElement;
-          }
-        });
-
-        // Only snap if we're not already aligned (within 50px threshold)
-        if (closestSection && closestDistance > 50) {
-          isScrollingRef.current = true;
-          const targetTop = (closestSection as HTMLElement).offsetTop;
-          
-          container.scrollTo({
-            top: targetTop,
-            behavior: 'smooth'
+            if (distance < closestDistance) {
+              closestDistance = distance;
+              closestSection = sectionElement;
+            }
           });
 
-          // Reset scrolling flag after animation completes
-          setTimeout(() => {
-            isScrollingRef.current = false;
-          }, 600);
-        }
-      }, 200); // Wait 200ms after scroll stops
+          // Only snap if we're not already aligned (within 100px threshold for smoother feel)
+          if (closestSection && closestDistance > 100) {
+            isScrollingRef.current = true;
+            const targetTop = (closestSection as HTMLElement).offsetTop;
+            
+            container.scrollTo({
+              top: targetTop,
+              behavior: 'smooth'
+            });
+
+            // Reset scrolling flag after animation completes
+            setTimeout(() => {
+              isScrollingRef.current = false;
+            }, 500);
+          }
+          
+          ticking = false;
+        }, 150); // Wait 150ms after scroll stops for smoother feel
+      });
     };
 
     container.addEventListener('scroll', handleScroll, { passive: true });
     
     return () => {
       container.removeEventListener('scroll', handleScroll);
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
@@ -114,7 +119,7 @@ export const ExpanovaHome: React.FC = () => {
   };
 
   return (
-    <div ref={containerRef} className="bg-[#0f1410] min-h-screen overflow-y-scroll snap-y snap-mandatory texture-overlay">
+    <div ref={containerRef} className="bg-[#0f1410] min-h-screen overflow-y-scroll snap-y snap-mandatory texture-overlay scroll-smooth">
       <Navigation />
       
       {/* Background gradient overlay */}
@@ -125,18 +130,18 @@ export const ExpanovaHome: React.FC = () => {
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-start">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 sm:mb-8 leading-tight tracking-tight">
                 {"Let's build what's next".split(" ").map((word, i) => (
                   <motion.span
                     key={i}
-                    initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    transition={{ duration: 0.8, delay: i * 0.15, ease: [0.2, 0.65, 0.3, 0.9] }}
-                    className="inline-block mr-[0.25em]"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="inline-block mr-[0.25em] will-change-transform"
                   >
                     {word}
                   </motion.span>
@@ -144,9 +149,9 @@ export const ExpanovaHome: React.FC = () => {
               </h1>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.4, delay: 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               <p className="text-base sm:text-lg md:text-xl text-white/70 leading-relaxed">
                 We fund, build, and scale innovative startups through our venture builder model. 
@@ -158,10 +163,10 @@ export const ExpanovaHome: React.FC = () => {
           {/* Feature Cards */}
           <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 mt-16 sm:mt-20">
             <SpotlightCard
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white/8 backdrop-blur-sm border border-white/15 text-white p-8 sm:p-10 md:p-12 rounded-2xl cursor-pointer hover:border-white/25 transition-all duration-300"
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="bg-white/8 backdrop-blur-sm border border-white/15 text-white p-8 sm:p-10 md:p-12 rounded-2xl cursor-pointer hover:border-white/25 transition-all duration-200 will-change-[transform,opacity]"
               onClick={() => setExpandedCard(expandedCard === 'capital' ? null : 'capital')}
             >
               <div className="relative z-10">
@@ -187,10 +192,10 @@ export const ExpanovaHome: React.FC = () => {
             </SpotlightCard>
 
             <SpotlightCard
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-white/8 backdrop-blur-sm border border-white/15 text-white p-8 sm:p-10 md:p-12 rounded-2xl cursor-pointer hover:border-white/25 transition-all duration-300"
+              transition={{ duration: 0.4, delay: 0.15 }}
+              className="bg-white/8 backdrop-blur-sm border border-white/15 text-white p-8 sm:p-10 md:p-12 rounded-2xl cursor-pointer hover:border-white/25 transition-all duration-200 will-change-[transform,opacity]"
               onClick={() => setExpandedCard(expandedCard === 'building' ? null : 'building')}
             >
               <div className="relative z-10">
@@ -227,18 +232,18 @@ export const ExpanovaHome: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
+              transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 will-change-[opacity]"
               onClick={() => setExpandedCard(null)}
             />
             
             {/* Modal */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-4 sm:inset-8 md:inset-12 lg:inset-16 z-50 flex items-center justify-center"
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="fixed inset-4 sm:inset-8 md:inset-12 lg:inset-16 z-50 flex items-center justify-center will-change-[transform,opacity]"
               onClick={(e) => e.stopPropagation()}
             >
               <div className={`w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl p-6 sm:p-8 md:p-12 ${
@@ -355,10 +360,10 @@ export const ExpanovaHome: React.FC = () => {
       <section id="ventures" className="h-screen flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12 relative z-10 border-t border-white/5 snap-start snap-always">
         <div className="max-w-7xl mx-auto w-full">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-5 md:mb-6">
               We back founders building the future internet
@@ -375,8 +380,8 @@ export const ExpanovaHome: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-white/8 backdrop-blur-sm border border-white/15 rounded-2xl p-8 sm:p-10 hover:border-white/25 transition-all duration-300"
+              transition={{ duration: 0.4, delay: 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="bg-white/8 backdrop-blur-sm border border-white/15 rounded-2xl p-8 sm:p-10 hover:border-white/25 transition-all duration-200 will-change-[transform,opacity]"
             >
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-4">
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
@@ -409,10 +414,10 @@ export const ExpanovaHome: React.FC = () => {
       <section id="products" className="h-screen flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12 relative z-10 border-t border-white/5 snap-start snap-always">
         <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="mb-12"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
@@ -425,8 +430,8 @@ export const ExpanovaHome: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-white/8 backdrop-blur-sm border border-white/15 rounded-2xl p-8 sm:p-10 hover:border-white/25 transition-all duration-300"
+              transition={{ duration: 0.4, delay: 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="bg-white/8 backdrop-blur-sm border border-white/15 rounded-2xl p-8 sm:p-10 hover:border-white/25 transition-all duration-200 will-change-[transform,opacity]"
             >
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
                 Criterion
@@ -451,8 +456,8 @@ export const ExpanovaHome: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white/8 backdrop-blur-sm border border-white/15 rounded-2xl p-8 sm:p-10 hover:border-white/25 transition-all duration-300"
+              transition={{ duration: 0.4, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="bg-white/8 backdrop-blur-sm border border-white/15 rounded-2xl p-8 sm:p-10 hover:border-white/25 transition-all duration-200 will-change-[transform,opacity]"
             >
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
                 China GDP AI
@@ -480,10 +485,10 @@ export const ExpanovaHome: React.FC = () => {
       <section id="agency" className="h-screen flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12 relative z-10 border-t border-white/5 snap-start snap-always">
         <div className="max-w-7xl mx-auto w-full">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="mb-12"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
@@ -492,11 +497,11 @@ export const ExpanovaHome: React.FC = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="bg-white/8 backdrop-blur-sm border border-white/15 rounded-2xl p-8 sm:p-10 hover:border-white/25 transition-all duration-300"
+            className="bg-white/8 backdrop-blur-sm border border-white/15 rounded-2xl p-8 sm:p-10 hover:border-white/25 transition-all duration-200 will-change-[transform,opacity]"
           >
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
               BlackBox Dev
@@ -528,7 +533,7 @@ export const ExpanovaHome: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="mb-6 sm:mb-8"
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
@@ -543,8 +548,8 @@ export const ExpanovaHome: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-white/8 backdrop-blur-sm border border-white/15 rounded-2xl p-8 sm:p-10"
+              transition={{ duration: 0.4, delay: 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="bg-white/8 backdrop-blur-sm border border-white/15 rounded-2xl p-8 sm:p-10 will-change-[transform,opacity]"
             >
               <ContactForm />
             </motion.div>
@@ -732,12 +737,28 @@ function SpotlightCard({
 }) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const rafRef = React.useRef<number | null>(null);
 
   function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
+    // Throttle with requestAnimationFrame for smooth performance
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+    }
+    
+    rafRef.current = requestAnimationFrame(() => {
+      const { left, top } = currentTarget.getBoundingClientRect();
+      mouseX.set(clientX - left);
+      mouseY.set(clientY - top);
+    });
   }
+
+  React.useEffect(() => {
+    return () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
+  }, []);
 
   return (
     <motion.div
@@ -747,7 +768,7 @@ function SpotlightCard({
       {...props}
     >
       <motion.div
-        className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100 z-30"
+        className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-200 group-hover:opacity-100 z-30 will-change-[opacity]"
         style={{
           background: useMotionTemplate`
             radial-gradient(

@@ -33,11 +33,14 @@ html {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  will-change: scroll-position;
 }
 
 .snap-start {
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  will-change: transform;
 }
 
 /* Custom scrollbar styling for scroll container */
@@ -65,6 +68,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.65;
+  /* Optimize for smooth scrolling */
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Allerta Stencil for titles - Strong specificity to override inline styles */
