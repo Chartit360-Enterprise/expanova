@@ -3,5 +3,6 @@
   "buildCommand": "cd LaunchPad/next && yarn build",
   "devCommand": "cd LaunchPad/next && yarn dev",
   "installCommand": "cd LaunchPad/next && yarn install",
-  "outputDirectory": "LaunchPad/next/.next"
+  "outputDirectory": "LaunchPad/next/.next",
+  "framework": "nextjs"
 }
