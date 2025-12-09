@@ -28,6 +28,18 @@ html {
   }
 }
 
+/* Scroll snap for section-based scrolling */
+.snap-y {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
 /* Custom scrollbar styling for scroll container */
 .snap-y::-webkit-scrollbar {
   width: 8px;

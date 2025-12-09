@@ -81,7 +81,7 @@ export default function ProductsPage() {
                 </h2>
               </div>
               <p className="text-base sm:text-lg text-white/60 mb-6 sm:mb-8 leading-relaxed" style={{ fontFamily: "'Spline Sans', sans-serif" }}>
-                AI-powered economic forecasting tool. Predicts China's quarterly GDP growth by analyzing real-time news and economic data through multi-model AI in under 2 minutes.
+                AI-powered economic forecasting tool. Predicts China&apos;s quarterly GDP growth by analyzing real-time news and economic data through multi-model AI in under 2 minutes.
               </p>
               <a
                 href="https://china.ml.expanova.io/"
